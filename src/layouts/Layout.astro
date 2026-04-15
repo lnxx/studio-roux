@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Studio Roux',
+  description = 'Food photography studio. We craft images that make people hungry.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title === 'Studio Roux' ? title : `${title} — Studio Roux`}</title>
+  </head>
+  <body>
+    <header class="fixed top-0 left-0 right-0 z-50 px-6 py-5 flex items-center justify-between mix-blend-difference">
+      <a href="/" class="font-heading text-lg font-bold tracking-widest uppercase text-white">
+        Studio Roux
+      </a>
+      <nav>
+        <ul class="flex gap-8 text-sm tracking-widest uppercase text-white">
+          <li><a href="/portfolio" class="hover:opacity-60 transition-opacity duration-200">Work</a></li>
+          <li><a href="/about" class="hover:opacity-60 transition-opacity duration-200">About</a></li>
+          <li><a href="/contact" class="hover:opacity-60 transition-opacity duration-200">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="border-t border-zinc-800 px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs tracking-widest uppercase text-zinc-500">
+      <span>© {new Date().getFullYear()} Studio Roux</span>
+      <span>Food Photography</span>
+    </footer>
+  </body>
+</html>

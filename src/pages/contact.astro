@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Replace YOUR_FORM_ID with your Formspree form ID after signing up at formspree.io
+const FORMSPREE_ID = 'YOUR_FORM_ID';
+---
+
+<Layout title="Contact" description="Get in touch with Studio Roux for food photography projects.">
+
+  <section class="pt-32 px-6 pb-24 max-w-2xl mx-auto">
+
+    <div class="mb-16">
+      <p class="text-xs tracking-[0.3em] uppercase text-zinc-500 mb-4">Contact</p>
+      <h1 class="font-heading text-5xl md:text-6xl font-black leading-tight">
+        Let's make<br /><em>something great.</em>
+      </h1>
+    </div>
+
+    <form
+      action={`https://formspree.io/f/${FORMSPREE_ID}`}
+      method="POST"
+      class="space-y-8"
+    >
+      <div class="space-y-2">
+        <label for="name" class="block text-xs tracking-widest uppercase text-zinc-400">
+          Name <span aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          autocomplete="name"
+          class="w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white transition-colors duration-200"
+          placeholder="Your name"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <label for="email" class="block text-xs tracking-widest uppercase text-zinc-400">
+          Email <span aria-hidden="true">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          autocomplete="email"
+          class="w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white transition-colors duration-200"
+          placeholder="your@email.com"
+        />
+      </div>
+
+      <div class="space-y-2">
+        <label for="project" class="block text-xs tracking-widest uppercase text-zinc-400">
+          Project Type
+        </label>
+        <select
+          id="project"
+          name="project"
+          class="w-full bg-black border-b border-zinc-700 py-3 text-white focus:outline-none focus:border-white transition-colors duration-200 cursor-pointer"
+        >
+          <option value="" disabled selected>Select a category</option>
+          <option value="editorial">Editorial</option>
+          <option value="commercial">Commercial / Restaurant</option>
+          <option value="packaging">Product & Packaging</option>
+          <option value="publishing">Recipe Book / Publishing</option>
+          <option value="social">Social Media Content</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="space-y-2">
+        <label for="message" class="block text-xs tracking-widest uppercase text-zinc-400">
+          Message <span aria-hidden="true">*</span>
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows="5"
+          class="w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white transition-colors duration-200 resize-none"
+          placeholder="Tell us about your project…"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full border border-white py-4 text-sm tracking-widest uppercase font-bold hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer"
+      >
+        Send Message
+      </button>
+    </form>
+
+  </section>
+
+</Layout>
