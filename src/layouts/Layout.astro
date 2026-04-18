@@ -71,19 +71,6 @@ const trPath = isEn ? (pathWithoutEn === '' ? '/' : pathWithoutEn) : currentPath
                 class={`ml-1 md:ml-2 px-4 md:px-5 py-2 bg-[#d70046] text-white text-xs md:text-sm font-semibold tracking-widest uppercase border-2 border-[#d70046] shadow-none md:shadow-[3px_3px_0_#111111] hover:translate-x-[3px] hover:translate-y-[3px] md:hover:shadow-none transition-all duration-150 cursor-pointer ${currentPath.includes('/contact') ? 'translate-x-[3px] translate-y-[3px] shadow-none' : ''}`}
               >{isEn ? 'Contact' : 'İletişim'}</a>
             </li>
-            <li class="flex items-center gap-1 ml-3 pl-3 border-l border-[#e8e8e8]">
-              <a
-                href={trPath}
-                onclick="localStorage.setItem('studio-roux-lang','tr')"
-                class={`text-xs font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${!isEn ? 'text-[#d70046]' : 'text-[#aaaaaa] hover:text-[#111111]'}`}
-              >TR</a>
-              <span class="text-[#dddddd] text-xs">/</span>
-              <a
-                href={enPath}
-                onclick="localStorage.setItem('studio-roux-lang','en')"
-                class={`text-xs font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${isEn ? 'text-[#d70046]' : 'text-[#aaaaaa] hover:text-[#111111]'}`}
-              >EN</a>
-            </li>
           </ul>
         </nav>
       </div>
@@ -118,7 +105,11 @@ const trPath = isEn ? (pathWithoutEn === '' ? '/' : pathWithoutEn) : currentPath
       <div class="border-t border-[#222222]">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between text-xs text-[#555555] tracking-widest uppercase font-body">
           <span>© {new Date().getFullYear()} Studio Roux</span>
-          <span>{isEn ? 'Food Photography' : 'Yemek Fotoğrafçılığı'}</span>
+          <div class="flex items-center gap-2">
+            <a href={trPath} onclick="localStorage.setItem('studio-roux-lang','tr')" class={`tracking-widest uppercase transition-colors duration-150 ${!isEn ? 'text-[#ffc928]' : 'hover:text-[#888888]'}`}>TR</a>
+            <span>/</span>
+            <a href={enPath} onclick="localStorage.setItem('studio-roux-lang','en')" class={`tracking-widest uppercase transition-colors duration-150 ${isEn ? 'text-[#ffc928]' : 'hover:text-[#888888]'}`}>EN</a>
+          </div>
         </div>
       </div>
     </footer>
