@@ -1,43 +1,54 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 
 const projects = [
-  { src: '/images/work-1.jpg', alt: 'Editorial — seasonal produce', category: 'Editorial', title: 'Seasonal Produce', width: 800, height: 600 },
-  { src: '/images/work-2.jpg', alt: 'Commercial — restaurant campaign', category: 'Commercial', title: 'Restaurant Campaign', width: 800, height: 1000 },
-  { src: '/images/work-3.jpg', alt: 'Packaging — artisan brand', category: 'Packaging', title: 'Artisan Brand', width: 800, height: 600 },
-  { src: '/images/work-4.jpg', alt: 'Editorial — fine dining', category: 'Editorial', title: 'Fine Dining', width: 800, height: 1000 },
-  { src: '/images/work-5.jpg', alt: 'Commercial — recipe book', category: 'Commercial', title: 'Recipe Book', width: 800, height: 600 },
-  { src: '/images/work-6.jpg', alt: 'Packaging — beverage line', category: 'Packaging', title: 'Beverage Line', width: 800, height: 600 },
+  { src: `${base}images/p-gougeres.jpg`,        alt: 'Gougeres cheese puffs overhead',             width: 1200, height: 1799 },
+  { src: `${base}images/p-salmon.jpg`,          alt: 'Baked salmon with vegetables',               width: 1200, height: 1799 },
+  { src: `${base}images/p-doner.jpg`,           alt: 'Doner kebab on orange background',           width: 1200, height: 1799 },
+  { src: `${base}images/p-madeleines.jpg`,      alt: 'Honey madeleines flat lay',                  width: 1200, height: 1800 },
+  { src: `${base}images/p-arrosticini-2.jpg`,   alt: 'Arrosticini skewers with red wine',          width: 1200, height: 1799 },
+  { src: `${base}images/p-french-toast.jpg`,    alt: 'French toast with berries and honey',        width: 1200, height: 1799 },
+  { src: `${base}images/p-pide.jpg`,            alt: 'Peynirli pide Turkish flatbread overhead',   width: 1200, height: 1799 },
+  { src: `${base}images/p-chouquettes-box.jpg`, alt: 'Chouquettes in a wooden gift box',           width: 1200, height: 1799 },
+  { src: `${base}images/p-gnocchi-soup.jpg`,    alt: 'Gnocchi chicken soup in enamel pot',         width: 1200, height: 1799 },
+  { src: `${base}images/p-garden-table.jpg`,    alt: 'Garden dining table at golden hour',         width: 1200, height: 1799 },
+  { src: `${base}images/p-flatbread.jpg`,       alt: 'Turkish flatbread with cheese and olives',   width: 1200, height: 900  },
+  { src: `${base}images/p-candlelit-cake.jpg`,  alt: 'Walnut cake with candle and champagne',      width: 1200, height: 799  },
+  { src: `${base}images/p-bundt-cake.jpg`,      alt: 'Bundt cake with flour and cranberries',      width: 1200, height: 1799 },
+  { src: `${base}images/p-ingredients.jpg`,     alt: 'Fresh salad ingredients editorial overhead', width: 1200, height: 1798 },
+  { src: `${base}images/p-pizzicotti.jpg`,      alt: 'Pizzicotti almond cookies overhead',         width: 1200, height: 1799 },
+  { src: `${base}images/p-doner-wrap.jpg`,      alt: 'Doner kebab wrap on red background',         width: 1200, height: 1799 },
 ];
 ---
 
-<Layout title="Portfolio" description="Selected food photography work by Studio Roux.">
+<Layout title="Portfolio" description="Food photography work by Studio Roux.">
 
-  <section class="pt-32 px-6 pb-24">
-    <div class="mb-16">
-      <p class="text-xs tracking-[0.3em] uppercase text-zinc-500 mb-4">Portfolio</p>
-      <h1 class="font-heading text-5xl md:text-6xl font-black">Selected Work</h1>
+  <section class="bg-[#d70046]">
+    <div class="max-w-7xl mx-auto px-6 py-6 md:py-12 flex items-end justify-between">
+      <div>
+        <p class="font-body text-xs font-semibold tracking-[0.3em] uppercase text-[#ffc928] mb-1">Portfolio</p>
+        <h1 class="font-display font-bold text-[clamp(2rem,5vw,5rem)] text-white leading-none tracking-tight">OUR WORK</h1>
+      </div>
     </div>
+  </section>
 
-    <!-- Masonry grid -->
-    <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-      {projects.map((project) => (
-        <div class="group relative overflow-hidden bg-zinc-900 break-inside-avoid">
-          <img
-            src={project.src}
-            alt={project.alt}
-            width={project.width}
-            height={project.height}
-            loading="lazy"
-            class="w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300"></div>
-          <div class="absolute bottom-0 left-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <p class="text-xs tracking-widest uppercase text-zinc-300 mb-1">{project.category}</p>
-            <p class="font-heading text-lg font-bold">{project.title}</p>
+  <section class="bg-[#faf8f3]">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+        {projects.map((project) => (
+          <div class="group relative overflow-hidden break-inside-avoid cursor-pointer">
+            <img
+              src={project.src}
+              alt={project.alt}
+              width={project.width}
+              height={project.height}
+              loading="lazy"
+              class="w-full object-cover block transition-transform duration-500 group-hover:scale-105"
+            />
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 

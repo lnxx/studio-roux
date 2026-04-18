@@ -1,97 +1,127 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Replace YOUR_FORM_ID with your Formspree form ID after signing up at formspree.io
-const FORMSPREE_ID = 'YOUR_FORM_ID';
+const FORMSPREE_ID = 'mvzdrglr';
 ---
 
 <Layout title="Contact" description="Get in touch with Studio Roux for food photography projects.">
 
-  <section class="pt-32 px-6 pb-24 max-w-2xl mx-auto">
-
-    <div class="mb-16">
-      <p class="text-xs tracking-[0.3em] uppercase text-zinc-500 mb-4">Contact</p>
-      <h1 class="font-heading text-5xl md:text-6xl font-black leading-tight">
-        Let's make<br /><em>something great.</em>
-      </h1>
+  <section class="bg-[#d70046]">
+    <div class="max-w-7xl mx-auto px-6 py-6 md:py-12">
+      <p class="font-body text-xs font-semibold tracking-[0.3em] uppercase text-[#ffc928] mb-1">Contact</p>
+      <h1 class="font-display font-bold text-[clamp(2rem,5vw,5rem)] text-white leading-none tracking-tight">LET'S<br />TALK.</h1>
     </div>
+  </section>
 
-    <form
-      action={`https://formspree.io/f/${FORMSPREE_ID}`}
-      method="POST"
-      class="space-y-8"
-    >
-      <div class="space-y-2">
-        <label for="name" class="block text-xs tracking-widest uppercase text-zinc-400">
-          Name <span aria-hidden="true">*</span>
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          autocomplete="name"
-          class="w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white transition-colors duration-200"
-          placeholder="Your name"
-        />
+  <section class="bg-[#faf8f3]">
+    <div class="max-w-7xl mx-auto px-6 py-12 md:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+
+        <div class="space-y-10">
+          <p class="font-body text-lg md:text-2xl font-light text-[#111111] leading-relaxed max-w-md">
+            Tell us about your project. We'll get back to you within one business day.
+          </p>
+          <div class="divide-y divide-[#e8e8e8] border-t border-[#e8e8e8]">
+
+            <div class="py-5">
+              <p class="font-body text-xs font-semibold tracking-widest uppercase text-[#888888] mb-1">Email</p>
+              <a href="mailto:studyoroux@gmail.com" class="font-body font-medium text-[#111111] hover:text-[#d70046] transition-colors duration-150">studyoroux@gmail.com</a>
+            </div>
+
+            <div class="py-5">
+              <p class="font-body text-xs font-semibold tracking-widest uppercase text-[#888888] mb-1">Phone</p>
+              <div class="flex items-center gap-3">
+                <a href="tel:+905056568976" class="font-body font-medium text-[#111111] hover:text-[#d70046] transition-colors duration-150">+90 505 656 89 76</a>
+                <a
+                  href="https://wa.me/905056568976"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Send a WhatsApp message"
+                  class="inline-flex items-center gap-1.5 bg-[#25D366] text-white font-body text-xs font-semibold tracking-widest uppercase px-3 py-1.5 hover:opacity-90 transition-opacity duration-150"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <div class="py-5">
+              <p class="font-body text-xs font-semibold tracking-widest uppercase text-[#888888] mb-1">Based in</p>
+              <p class="font-body font-medium text-[#111111]">Antalya, Turkey</p>
+            </div>
+
+            <div class="py-5">
+              <p class="font-body text-xs font-semibold tracking-widest uppercase text-[#888888] mb-1">Available for</p>
+              <p class="font-body font-medium text-[#111111]">Local & International Projects</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <form
+            action={`https://formspree.io/f/${FORMSPREE_ID}`}
+            method="POST"
+            class="space-y-6"
+          >
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block font-body text-xs font-semibold tracking-widest uppercase text-[#111111] mb-2">
+                  Name <span aria-hidden="true" class="text-[#d70046]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  autocomplete="name"
+                  class="w-full border border-[#d0cec9] px-4 py-3 font-body text-[#111111] placeholder:text-[#bbbbbb] focus:outline-none focus:border-[#d70046] transition-all duration-150 bg-white"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label for="email" class="block font-body text-xs font-semibold tracking-widest uppercase text-[#111111] mb-2">
+                  Email <span aria-hidden="true" class="text-[#d70046]">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  class="w-full border border-[#d0cec9] px-4 py-3 font-body text-[#111111] placeholder:text-[#bbbbbb] focus:outline-none focus:border-[#d70046] transition-all duration-150 bg-white"
+                  placeholder="your@email.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="message" class="block font-body text-xs font-semibold tracking-widest uppercase text-[#111111] mb-2">
+                Message <span aria-hidden="true" class="text-[#d70046]">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="6"
+                class="w-full border border-[#d0cec9] px-4 py-3 font-body text-[#111111] placeholder:text-[#bbbbbb] focus:outline-none focus:border-[#d70046] transition-all duration-150 bg-white resize-none"
+                placeholder="Tell us about your project."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-[#d70046] text-white py-4 font-body font-bold text-sm tracking-widest uppercase border-2 border-[#d70046] shadow-[5px_5px_0_#111111] hover:translate-x-[5px] hover:translate-y-[5px] hover:shadow-none transition-all duration-150 cursor-pointer"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+
       </div>
-
-      <div class="space-y-2">
-        <label for="email" class="block text-xs tracking-widest uppercase text-zinc-400">
-          Email <span aria-hidden="true">*</span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          autocomplete="email"
-          class="w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white transition-colors duration-200"
-          placeholder="your@email.com"
-        />
-      </div>
-
-      <div class="space-y-2">
-        <label for="project" class="block text-xs tracking-widest uppercase text-zinc-400">
-          Project Type
-        </label>
-        <select
-          id="project"
-          name="project"
-          class="w-full bg-black border-b border-zinc-700 py-3 text-white focus:outline-none focus:border-white transition-colors duration-200 cursor-pointer"
-        >
-          <option value="" disabled selected>Select a category</option>
-          <option value="editorial">Editorial</option>
-          <option value="commercial">Commercial / Restaurant</option>
-          <option value="packaging">Product & Packaging</option>
-          <option value="publishing">Recipe Book / Publishing</option>
-          <option value="social">Social Media Content</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <div class="space-y-2">
-        <label for="message" class="block text-xs tracking-widest uppercase text-zinc-400">
-          Message <span aria-hidden="true">*</span>
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows="5"
-          class="w-full bg-transparent border-b border-zinc-700 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white transition-colors duration-200 resize-none"
-          placeholder="Tell us about your project…"
-        ></textarea>
-      </div>
-
-      <button
-        type="submit"
-        class="w-full border border-white py-4 text-sm tracking-widest uppercase font-bold hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer"
-      >
-        Send Message
-      </button>
-    </form>
-
+    </div>
   </section>
 
 </Layout>

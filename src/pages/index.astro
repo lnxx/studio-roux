@@ -1,89 +1,217 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+const linkBase = base.replace(/\/$/, '');
+
+const heroImages = [
+  { src: `${base}images/hero-b.jpg`, alt: 'Baked salmon with vegetables' },
+  { src: `${base}images/hero-c.jpg`, alt: 'Doner kebab wrap on red background' },
+  { src: `${base}images/hero-a.jpg`, alt: 'Layered sandwich on blue background' },
+];
+
+const services = [
+  {
+    title: 'Food Photography & Videography',
+    body: 'High-end visual production for brands. We combine culinary aesthetics with cinematic techniques to create professional photos and videos for menus, advertising, and digital content.',
+  },
+  {
+    title: 'Editorial Design: Cookbooks & Magazines',
+    body: 'Specialized design for the culinary world. We manage the entire process of creating printed or digital cookbooks and food magazines, turning recipes into premium storytelling pieces.',
+  },
+  {
+    title: 'Recipe & Menu Development',
+    body: 'Professional culinary knowledge in action. We develop standardized recipes and innovative menus, leveraging our expertise in the food industry to ensure quality, consistency, and operational success.',
+  },
+  {
+    title: 'Social Media & Brand Identity',
+    body: 'Managing your digital and visual presence. We design social media strategies and brand identities that connect your culinary story with the right audience.',
+  },
+];
 ---
 
-<Layout title="Studio Roux" description="Food photography studio. We craft images that make people hungry.">
+<Layout title="Studio Roux" description="Antalya-based gastronomy creative studio. Food photography, content, and brand strategy for the food and hospitality industry.">
 
-  <!-- Hero -->
-  <section class="relative min-h-dvh flex flex-col justify-end px-6 pb-16 md:pb-24 overflow-hidden">
-    <div class="absolute inset-0 bg-zinc-900">
-      <img
-        src="/images/hero.jpg"
-        alt=""
-        class="w-full h-full object-cover opacity-70"
-        width="1920"
-        height="1080"
-      />
-    </div>
-    <div class="relative z-10 max-w-4xl">
-      <p class="text-xs tracking-[0.3em] uppercase text-zinc-400 mb-6">Food Photography Studio</p>
-      <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-8">
-        We make food<br /><em>irresistible.</em>
-      </h1>
-      <a
-        href="/portfolio"
-        class="inline-block border border-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-colors duration-300"
-      >
-        View Work
-      </a>
-    </div>
-  </section>
+  <section class="flex flex-col lg:grid lg:grid-cols-[55%_45%] h-[100svh] lg:h-auto lg:min-h-[100svh]">
 
-  <!-- Selected Work Preview -->
-  <section class="px-6 py-24 md:py-32">
-    <div class="flex items-baseline justify-between mb-12">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold">Selected Work</h2>
-      <a href="/portfolio" class="text-xs tracking-widest uppercase text-zinc-400 hover:text-white transition-colors duration-200">
-        All Projects →
-      </a>
-    </div>
+    <div class="bg-[#faf8f3] flex-shrink-0 flex flex-col justify-between px-6 py-6 lg:px-14 lg:py-14 lg:min-h-[100svh]">
+      <div>
+        <p class="font-body text-xs font-semibold tracking-[0.3em] uppercase text-[#d70046]">
+          Food Photography Studio · Antalya
+        </p>
+      </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="group relative overflow-hidden bg-zinc-900 aspect-[4/3]">
-        <img src="/images/work-1.jpg" alt="Editorial shoot — seasonal produce" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" width="800" height="600" loading="lazy" />
-        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
-        <div class="absolute bottom-0 left-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-          <p class="font-heading text-lg font-bold">Editorial</p>
-          <p class="text-xs tracking-widest uppercase text-zinc-300">Seasonal Produce</p>
+      <div>
+        <h1 class="font-display font-bold text-[clamp(2.2rem,4vw,5.5rem)] leading-[0.9] tracking-tight text-[#111111] mb-3 md:mb-8">
+          WE MAKE<br />
+          <span class="text-[#d70046]">FOOD</span><br />
+          IRRESISTIBLE.
+        </h1>
+        <p class="font-body text-xs md:text-base text-[#666666] max-w-xs mb-4 md:mb-10 leading-snug md:leading-relaxed">
+          Studio Roux is an Antalya-based gastronomy creative studio creating innovative content for brands in the food and hospitality industry.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href={`${linkBase}/portfolio`}
+            class="inline-block bg-white text-[#111111] px-5 py-2.5 md:px-7 md:py-3.5 font-body font-bold text-xs md:text-sm tracking-widest uppercase border-2 border-[#111111] shadow-[4px_4px_0_#d70046] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-150 cursor-pointer"
+          >
+            View Work
+          </a>
+          <a
+            href={`${linkBase}/contact`}
+            class="inline-block bg-[#d70046] text-white px-5 py-2.5 md:px-7 md:py-3.5 font-body font-bold text-xs md:text-sm tracking-widest uppercase border-2 border-[#d70046] shadow-[4px_4px_0_#111111] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-150 cursor-pointer"
+          >
+            Get in Touch
+          </a>
         </div>
       </div>
 
-      <div class="group relative overflow-hidden bg-zinc-900 aspect-[4/3]">
-        <img src="/images/work-2.jpg" alt="Commercial shoot — restaurant campaign" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" width="800" height="600" loading="lazy" />
-        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
-        <div class="absolute bottom-0 left-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-          <p class="font-heading text-lg font-bold">Commercial</p>
-          <p class="text-xs tracking-widest uppercase text-zinc-300">Restaurant Campaign</p>
+      <div class="hidden lg:block border-t border-[#111111]/10 pt-5">
+        <p class="font-body text-xs text-[#aaaaaa] tracking-widest uppercase">Est. 2020 · Antalya, Turkey</p>
+      </div>
+    </div>
+
+    <div class="relative flex-1 lg:flex-none overflow-hidden bg-[#1a1a1a] lg:h-auto lg:min-h-[100svh]">
+      {heroImages.map((img, i) => (
+        <img
+          src={img.src}
+          alt={img.alt}
+          width="800"
+          height="1000"
+          loading={i === 0 ? 'eager' : 'lazy'}
+          class={`hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-[#d70046]">
+    <div class="max-w-7xl mx-auto px-6 py-10 md:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end">
+
+        <div>
+          <span class="inline-block bg-[#ffc928] text-[#111111] font-body text-xs font-semibold tracking-[0.25em] uppercase px-3 py-1 mb-5">About</span>
+          <h2 class="font-display font-bold text-[clamp(2rem,4vw,4.5rem)] text-white leading-[0.95] tracking-tight">
+            WE APPROACH<br />FOOD THROUGH<br />A <span class="text-[#ffc928]">DESIGNER'S</span><br />LENS.
+          </h2>
         </div>
+
+        <div class="flex flex-col gap-5">
+          <p class="font-body text-sm md:text-base text-white/80 leading-relaxed">
+            We work with restaurants, hotels, and food brands to create photography, content, and brand strategy, combining gastronomy, visual storytelling, and design from concept to execution.
+          </p>
+          <p class="font-body text-sm md:text-base text-white/80 leading-relaxed">
+            Based in Antalya, we bring together a curated network of chefs, architects, editors, and strategists to deliver work that is both creatively bold and commercially effective.
+          </p>
+          <div class="pt-2">
+            <a
+              href={`${linkBase}/about`}
+              class="inline-block bg-white text-[#111111] px-6 py-3 font-body font-bold text-xs tracking-widest uppercase border-2 border-white shadow-[4px_4px_0_#111111] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-150 cursor-pointer"
+            >
+              More About Us
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-12 md:py-16">
+
+      <div class="flex items-end justify-between mb-6 md:mb-10">
+        <div>
+          <span class="inline-block bg-[#d70046] text-white font-body text-xs font-semibold tracking-[0.25em] uppercase px-3 py-1 mb-3">Services</span>
+          <h2 class="font-display font-bold text-[clamp(1.8rem,3.5vw,3.5rem)] text-[#111111] leading-none">WHAT WE DO</h2>
+        </div>
+        <a href={`${linkBase}/contact`} class="hidden md:inline-block font-body text-sm font-semibold tracking-widest uppercase text-[#111111] border-b-2 border-[#d70046] pb-0.5 hover:text-[#d70046] transition-colors duration-150">
+          Start a Project →
+        </a>
       </div>
 
-      <div class="group relative overflow-hidden bg-zinc-900 aspect-[4/3] md:col-span-2 md:aspect-[16/7]">
-        <img src="/images/work-3.jpg" alt="Packaging shoot — artisan brand" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" width="1600" height="700" loading="lazy" />
-        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
-        <div class="absolute bottom-0 left-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-          <p class="font-heading text-lg font-bold">Packaging</p>
-          <p class="text-xs tracking-widest uppercase text-zinc-300">Artisan Brand</p>
+      <div>
+        {services.map((service, i) => (
+          <div class={`group grid grid-cols-1 md:grid-cols-[5fr_7fr_1.5rem] items-baseline gap-y-1 gap-x-12 py-5 md:py-6 border-l-[4px] pl-5 hover:bg-[#ffc928] transition-colors duration-150 cursor-pointer ${i % 2 === 0 ? 'border-l-[#d70046]' : 'border-l-[#ffc928]'}`}>
+            <h3 class="font-display font-bold text-[1.15rem] md:text-[1.3rem] text-[#111111] uppercase leading-snug group-hover:text-[#d70046] transition-colors duration-150">
+              {service.title}
+            </h3>
+            <p class="font-body text-sm text-[#555555] leading-relaxed group-hover:text-[#111111]/70 transition-colors duration-150">
+              {service.body}
+            </p>
+            <span class="hidden md:block font-body text-base text-[#d70046] opacity-0 group-hover:opacity-100 transition-opacity duration-150 text-right">→</span>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <section class="bg-[#faf8f3]">
+    <div class="max-w-7xl mx-auto px-6 py-12 md:py-16">
+      <div class="flex items-end justify-between mb-6 md:mb-10">
+        <div>
+          <p class="font-body text-xs font-semibold tracking-[0.25em] uppercase text-[#d70046] mb-2">Portfolio</p>
+          <h2 class="font-display font-bold text-[clamp(1.8rem,3.5vw,3.5rem)] text-[#111111] leading-none">SELECTED<br />WORK</h2>
+        </div>
+        <a href={`${linkBase}/portfolio`} class="font-body text-sm font-semibold tracking-widest uppercase text-[#111111] hover:text-[#d70046] transition-colors duration-150">
+          All Projects →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:[grid-template-rows:380px_280px]">
+        <div class="md:col-span-8 overflow-hidden bg-[#e8e5de] aspect-[4/3] md:aspect-auto">
+          <img src={`${base}images/p-gougeres.jpg`} alt="Gougeres cheese puffs overhead" class="w-full h-full object-cover" width="1200" height="1799" loading="lazy" />
+        </div>
+
+        <div class="md:col-span-4 overflow-hidden bg-[#e8e5de] aspect-[4/3] md:aspect-auto">
+          <img src={`${base}images/p-arrosticini-2.jpg`} alt="Arrosticini skewers with red wine" class="w-full h-full object-cover" width="1200" height="1799" loading="lazy" />
+        </div>
+
+        <div class="md:col-span-4 overflow-hidden bg-[#e8e5de] aspect-[4/3] md:aspect-auto">
+          <img src={`${base}images/p-candlelit-cake.jpg`} alt="Walnut cake with candle and champagne" class="w-full h-full object-cover" width="1200" height="799" loading="lazy" />
+        </div>
+
+        <div class="md:col-span-8 overflow-hidden bg-[#e8e5de] aspect-[4/3] md:aspect-auto">
+          <img src={`${base}images/p-flatbread.jpg`} alt="Turkish flatbread with cheese and olives" class="w-full h-full object-cover" width="1200" height="900" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Quote break -->
-  <section class="border-t border-zinc-800 px-6 py-24 md:py-32 text-center">
-    <p class="font-heading text-3xl md:text-5xl lg:text-6xl font-black max-w-4xl mx-auto leading-tight">
-      "Every dish has a story.<br /><em>We tell it with light."</em>
-    </p>
-  </section>
-
-  <!-- CTA -->
-  <section class="px-6 pb-24 md:pb-32 text-center">
-    <p class="text-sm tracking-widest uppercase text-zinc-400 mb-6">Let's work together</p>
-    <a
-      href="/contact"
-      class="inline-block border border-white px-12 py-4 font-heading text-xl font-bold hover:bg-white hover:text-black transition-colors duration-300"
-    >
-      Get in Touch
-    </a>
+  <section class="bg-[#d70046]">
+    <div class="max-w-7xl mx-auto px-6 py-12 md:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 items-center">
+        <div>
+          <p class="font-body text-xs font-semibold tracking-[0.25em] uppercase text-white/60 mb-4">Contact</p>
+          <h2 class="font-display font-bold text-[clamp(1.8rem,3.5vw,3.8rem)] text-white leading-none mb-6">
+            LET'S CREATE<br />SOMETHING<br />MEANINGFUL.
+          </h2>
+          <p class="font-body text-lg text-white/70 max-w-md">
+            Whether you're building a brand, launching a restaurant, or looking to elevate your content, we'd love to hear from you.
+          </p>
+        </div>
+        <a
+          href={`${linkBase}/contact`}
+          class="shrink-0 inline-block bg-[#ffc928] text-[#111111] px-6 py-3 md:px-10 md:py-5 font-display font-bold text-base md:text-2xl tracking-wider border-2 border-[#111111] shadow-[4px_4px_0_#111111] md:shadow-[6px_6px_0_#111111] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all duration-150 cursor-pointer"
+        >
+          GET IN TOUCH
+        </a>
+      </div>
+    </div>
   </section>
 
 </Layout>
+
+<script>
+  const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
+  if (slides.length > 1) {
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.add('opacity-0');
+      slides[current].classList.remove('opacity-100');
+      current = (current + 1) % slides.length;
+      slides[current].classList.remove('opacity-0');
+      slides[current].classList.add('opacity-100');
+    }, 4000);
+  }
+</script>
