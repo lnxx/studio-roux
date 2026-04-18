@@ -4,31 +4,43 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  lang?: string;
 }
 
 const {
   title = 'Studio Roux',
   description = 'Food photography studio. We make food irresistible.',
+  lang = 'tr',
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const isEn = lang === 'en';
+const navBase = isEn ? '/en' : '';
+
+// Compute alternate language URL
+const pathWithoutEn = currentPath.replace(/^\/en\/?/, '/').replace(/\/$/, '') || '/';
+const enPath = isEn ? currentPath : (currentPath === '/' ? '/en/' : `/en${currentPath}`);
+const trPath = isEn ? (pathWithoutEn === '' ? '/' : pathWithoutEn) : currentPath;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon.png`} />
+    <link rel="alternate" hreflang="tr" href={trPath} />
+    <link rel="alternate" hreflang="en" href={enPath} />
     <title>{title === 'Studio Roux' ? title : `${title} | Studio Roux`}</title>
   </head>
   <body>
 
     <header class="sticky top-0 z-50 bg-white border-b border-[#e8e8e8]">
       <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href={`${base}/`} aria-label="Studio Roux home" class="flex-shrink-0">
+        <a href={`${navBase}/`} aria-label="Studio Roux home" class="flex-shrink-0">
           <img
             src={`${import.meta.env.BASE_URL}images/logo-1x.png`}
             srcset={`${import.meta.env.BASE_URL}images/logo-1x.png 1x, ${import.meta.env.BASE_URL}images/logo.png 2x`}
@@ -43,21 +55,34 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <ul class="flex items-center gap-0 md:gap-1">
             <li>
               <a
-                href={`${base}/portfolio`}
+                href={`${navBase}/portfolio`}
                 class={`px-3 md:px-4 py-2 text-xs md:text-sm font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${currentPath.includes('/portfolio') ? 'text-[#d70046]' : 'text-[#111111] hover:text-[#d70046]'}`}
-              >Work</a>
+              >{isEn ? 'Work' : 'Çalışmalar'}</a>
             </li>
             <li>
               <a
-                href={`${base}/about`}
+                href={`${navBase}/about`}
                 class={`px-3 md:px-4 py-2 text-xs md:text-sm font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${currentPath.includes('/about') ? 'text-[#d70046]' : 'text-[#111111] hover:text-[#d70046]'}`}
-              >About</a>
+              >{isEn ? 'About' : 'Hakkımızda'}</a>
             </li>
             <li>
               <a
-                href={`${base}/contact`}
-                class="ml-1 md:ml-2 px-4 md:px-5 py-2 bg-[#d70046] text-white text-xs md:text-sm font-semibold tracking-widest uppercase border-2 border-[#d70046] shadow-none md:shadow-[3px_3px_0_#111111] hover:translate-x-[3px] hover:translate-y-[3px] md:hover:shadow-none transition-all duration-150 cursor-pointer"
-              >Contact</a>
+                href={`${navBase}/contact`}
+                class={`ml-1 md:ml-2 px-4 md:px-5 py-2 bg-[#d70046] text-white text-xs md:text-sm font-semibold tracking-widest uppercase border-2 border-[#d70046] shadow-none md:shadow-[3px_3px_0_#111111] hover:translate-x-[3px] hover:translate-y-[3px] md:hover:shadow-none transition-all duration-150 cursor-pointer ${currentPath.includes('/contact') ? 'translate-x-[3px] translate-y-[3px] shadow-none' : ''}`}
+              >{isEn ? 'Contact' : 'İletişim'}</a>
+            </li>
+            <li class="flex items-center gap-1 ml-3 pl-3 border-l border-[#e8e8e8]">
+              <a
+                href={trPath}
+                onclick="localStorage.setItem('studio-roux-lang','tr')"
+                class={`text-xs font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${!isEn ? 'text-[#d70046]' : 'text-[#aaaaaa] hover:text-[#111111]'}`}
+              >TR</a>
+              <span class="text-[#dddddd] text-xs">/</span>
+              <a
+                href={enPath}
+                onclick="localStorage.setItem('studio-roux-lang','en')"
+                class={`text-xs font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${isEn ? 'text-[#d70046]' : 'text-[#aaaaaa] hover:text-[#111111]'}`}
+              >EN</a>
             </li>
           </ul>
         </nav>
@@ -79,21 +104,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             class="h-7 w-auto brightness-0 invert mb-4"
           />
           <p class="text-sm text-[#888888] max-w-xs font-body">
-            Food photography studio. We make every dish look as good as it tastes.
+            {isEn ? 'Food photography studio. We make every dish look as good as it tastes.' : 'Yemek fotoğrafçılığı stüdyosu. Her tabağı tadı kadar iştah açıcı gösteriyoruz.'}
           </p>
         </div>
         <nav aria-label="Footer navigation">
           <ul class="flex flex-col gap-2 text-sm font-body font-medium tracking-widest uppercase">
-            <li><a href={`${base}/portfolio`} class="text-[#888888] hover:text-[#ffc928] transition-colors duration-150">Work</a></li>
-            <li><a href={`${base}/about`} class="text-[#888888] hover:text-[#ffc928] transition-colors duration-150">About</a></li>
-            <li><a href={`${base}/contact`} class="text-[#888888] hover:text-[#ffc928] transition-colors duration-150">Contact</a></li>
+            <li><a href={`${navBase}/portfolio`} class="text-[#888888] hover:text-[#ffc928] transition-colors duration-150">{isEn ? 'Work' : 'Çalışmalar'}</a></li>
+            <li><a href={`${navBase}/about`} class="text-[#888888] hover:text-[#ffc928] transition-colors duration-150">{isEn ? 'About' : 'Hakkımızda'}</a></li>
+            <li><a href={`${navBase}/contact`} class="text-[#888888] hover:text-[#ffc928] transition-colors duration-150">{isEn ? 'Contact' : 'İletişim'}</a></li>
           </ul>
         </nav>
       </div>
       <div class="border-t border-[#222222]">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between text-xs text-[#555555] tracking-widest uppercase font-body">
           <span>© {new Date().getFullYear()} Studio Roux</span>
-          <span>Food Photography</span>
+          <span>{isEn ? 'Food Photography' : 'Yemek Fotoğrafçılığı'}</span>
         </div>
       </div>
     </footer>

@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { tr as t } from '../i18n/tr';
+import Layout from '../../layouts/Layout.astro';
+import { en as t } from '../../i18n/en';
 const base = import.meta.env.BASE_URL;
-const linkBase = '';
+const linkBase = '/en';
 
 const heroImages = [
   { src: `${base}images/hero-b.jpg`, alt: 'Baked salmon with vegetables' },
@@ -11,7 +11,7 @@ const heroImages = [
 ];
 ---
 
-<Layout title={t.home.metaTitle} description={t.home.metaDescription} lang="tr">
+<Layout title={t.home.metaTitle} description={t.home.metaDescription} lang="en">
 
   <section class="flex flex-col lg:grid lg:grid-cols-[55%_45%] h-[100svh] lg:h-auto lg:min-h-[100svh]">
 
@@ -189,18 +189,8 @@ const heroImages = [
 </Layout>
 
 <script>
-  // Auto-detect language on first visit
-  if (!localStorage.getItem('studio-roux-lang')) {
-    const pref = navigator.language || '';
-    if (pref.startsWith('en')) {
-      localStorage.setItem('studio-roux-lang', 'en');
-      window.location.replace('/en/');
-    } else {
-      localStorage.setItem('studio-roux-lang', 'tr');
-    }
-  }
+  localStorage.setItem('studio-roux-lang', 'en');
 
-  // Hero slideshow
   const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
   if (slides.length > 1) {
     let current = 0;
