@@ -20,5 +20,10 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# large source photo directories (not needed in repo)
+photos-large/
+images-1/
+inspiration-sc/
+
 # jetbrains setting folder
 .idea/
