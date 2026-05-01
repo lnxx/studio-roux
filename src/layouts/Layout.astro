@@ -51,18 +51,20 @@ const trPath = isEn ? (pathWithoutEn === '' ? '/' : pathWithoutEn) : currentPath
             style="aspect-ratio: 883/394;"
           />
         </a>
-        <nav aria-label="Main navigation">
-          <ul class="flex items-center gap-0 md:gap-1">
+
+        <!-- Desktop nav -->
+        <nav aria-label="Main navigation" class="hidden md:block">
+          <ul class="flex items-center gap-1">
             <li>
               <a
                 href={`${navBase}/portfolio`}
-                class={`px-3 md:px-4 py-2 text-xs md:text-sm font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${currentPath.includes('/portfolio') ? 'text-[#d70046]' : 'text-[#111111] hover:text-[#d70046]'}`}
+                class={`px-4 py-2 text-sm font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${currentPath.includes('/portfolio') ? 'text-[#d70046]' : 'text-[#111111] hover:text-[#d70046]'}`}
               >{isEn ? 'Work' : 'Çalışmalar'}</a>
             </li>
             <li>
               <a
                 href={`${navBase}/about`}
-                class={`px-3 md:px-4 py-2 text-xs md:text-sm font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${currentPath.includes('/about') ? 'text-[#d70046]' : 'text-[#111111] hover:text-[#d70046]'}`}
+                class={`px-4 py-2 text-sm font-body font-semibold tracking-widest uppercase transition-colors duration-150 ${currentPath.includes('/about') ? 'text-[#d70046]' : 'text-[#111111] hover:text-[#d70046]'}`}
               >{isEn ? 'About' : 'Hakkımızda'}</a>
             </li>
             <li>
@@ -71,7 +73,7 @@ const trPath = isEn ? (pathWithoutEn === '' ? '/' : pathWithoutEn) : currentPath
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Studio Roux on Instagram"
-                class="ml-1 md:ml-2 px-2 md:px-3 py-2 flex items-center text-[#111111] hover:text-[#d70046] transition-colors duration-150"
+                class="ml-2 px-3 py-2 flex items-center text-[#111111] hover:text-[#d70046] transition-colors duration-150"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -83,13 +85,89 @@ const trPath = isEn ? (pathWithoutEn === '' ? '/' : pathWithoutEn) : currentPath
             <li>
               <a
                 href={`${navBase}/contact`}
-                class={`ml-1 md:ml-2 px-4 md:px-5 py-2 bg-[#d70046] text-white text-xs md:text-sm font-semibold tracking-widest uppercase border-2 border-[#d70046] shadow-none md:shadow-[3px_3px_0_#111111] hover:translate-x-[3px] hover:translate-y-[3px] md:hover:shadow-none transition-all duration-150 cursor-pointer ${currentPath.includes('/contact') ? 'translate-x-[3px] translate-y-[3px] shadow-none' : ''}`}
+                class={`ml-2 px-5 py-2 bg-[#d70046] text-white text-sm font-semibold tracking-widest uppercase border-2 border-[#d70046] shadow-[3px_3px_0_#111111] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all duration-150 cursor-pointer ${currentPath.includes('/contact') ? 'translate-x-[3px] translate-y-[3px] shadow-none' : ''}`}
+              >{isEn ? 'Contact' : 'İletişim'}</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Mobile hamburger button -->
+        <button
+          id="menu-toggle"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="block w-6 h-0.5 bg-[#111111] transition-all duration-200" id="bar1"></span>
+          <span class="block w-6 h-0.5 bg-[#111111] transition-all duration-200" id="bar2"></span>
+          <span class="block w-6 h-0.5 bg-[#111111] transition-all duration-200" id="bar3"></span>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-[#e8e8e8]">
+        <nav aria-label="Mobile navigation">
+          <ul class="flex flex-col px-6 py-4 gap-1">
+            <li>
+              <a
+                href={`${navBase}/portfolio`}
+                class={`block py-3 text-sm font-body font-semibold tracking-widest uppercase border-b border-[#e8e8e8] transition-colors duration-150 ${currentPath.includes('/portfolio') ? 'text-[#d70046]' : 'text-[#111111]'}`}
+              >{isEn ? 'Work' : 'Çalışmalar'}</a>
+            </li>
+            <li>
+              <a
+                href={`${navBase}/about`}
+                class={`block py-3 text-sm font-body font-semibold tracking-widest uppercase border-b border-[#e8e8e8] transition-colors duration-150 ${currentPath.includes('/about') ? 'text-[#d70046]' : 'text-[#111111]'}`}
+              >{isEn ? 'About' : 'Hakkımızda'}</a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/studyoroux/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 py-3 text-sm font-body font-semibold tracking-widest uppercase border-b border-[#e8e8e8] text-[#111111]"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                </svg>
+                Instagram
+              </a>
+            </li>
+            <li class="pt-2">
+              <a
+                href={`${navBase}/contact`}
+                class="block text-center px-5 py-3 bg-[#d70046] text-white text-sm font-semibold tracking-widest uppercase border-2 border-[#d70046] shadow-[3px_3px_0_#111111]"
               >{isEn ? 'Contact' : 'İletişim'}</a>
             </li>
           </ul>
         </nav>
       </div>
     </header>
+
+    <script>
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+
+      toggle?.addEventListener('click', () => {
+        const isOpen = menu?.classList.toggle('hidden') === false;
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        if (isOpen) {
+          bar1!.style.transform = 'translateY(8px) rotate(45deg)';
+          bar2!.style.opacity = '0';
+          bar3!.style.transform = 'translateY(-8px) rotate(-45deg)';
+        } else {
+          bar1!.style.transform = '';
+          bar2!.style.opacity = '';
+          bar3!.style.transform = '';
+        }
+      });
+    </script>
 
     <main>
       <slot />
